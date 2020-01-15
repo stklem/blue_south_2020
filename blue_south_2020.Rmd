@@ -150,12 +150,13 @@ states_sf <- get_urbn_map(map = "states", sf = TRUE)
 # join w/ movement data
 states_all_sf <- full_join(states_sf, state_all, by = c("state_name" = "a_state_name"))
 
-
+options(scipen = 999)
 states_all_sf %>%
   ggplot() +
   geom_sf(mapping = aes(fill = net_migration),
           color = "snow", size = 0.5) +
-  scale_fill_gradient2(midpoint = 0, low = "red", mid = "bisque1", high = "royalblue2", space = "Lab") + 
+  scale_fill_gradient2(midpoint = 0, low = "red", mid = "bisque1", high = "royalblue2", 
+                       space = "Lab") + 
   labs(title = "Net Migration by State, 2013-2017", fill = "") +
     geom_sf_text(data = get_urbn_labels(map = "states", sf = TRUE), 
                 aes(label = state_abbv), size = 3) +
