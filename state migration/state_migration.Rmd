@@ -1,6 +1,8 @@
 ---
 title: "R Notebook"
-output: html_notebook
+output:
+  html_document:
+    df_print: paged
 ---
 
 ## TODO:
@@ -146,82 +148,6 @@ fwrite(south_state_all, "output/south_state_all.csv")
 
 ```
 
-## Basic Visuals
-
-### Bar Graph: State Net Migration
-```{r useful references, include=FALSE}
-# https://www.datanovia.com/en/blog/ggplot-colors-best-tricks-you-will-love/#gradient-or-continuous-colors
-# https://github.com/UrbanInstitute/urbnmapr
-# http://www.endmemo.com/program/R/color.php 
-```
-
-
-```{r state bar graph}
-# turns off scientific notation
-options(scipen = 999)
-
-state_all %>%
-  arrange(desc(net_migration)) %>%
-  ggplot(aes(x = reorder(a_state_name, net_migration), 
-             y = net_migration, 
-             fill = net_migration)) +
-  geom_bar(stat = "identity") +
-  scale_fill_viridis(option = "plasma") +
-  coord_flip() +
-  theme_light() +
-  ylab("Positive Net Migration, 2013-2017") +
-  labs(title = "Net Migration") + 
-  theme(legend.position = "none", 
-        axis.title.y = element_blank()) +
-  ggsave("state_to_state_bar.png", dpi = "retina")
-
-
-```
-
-### Bar Graph: Top County Movements
-
-```{r top county movements}
-
-# 8: Visualize the Biggest County Movements
-summary_county %>% 
-  arrange(desc(net_migration)) %>%
-  top_n(50, net_migration) %>% 
-  mutate(journey = paste(b_county_name, USPS.y, "to", a_county_name, USPS.x, sep = " ")) %>%
-  ggplot(aes(x = reorder(journey, net_migration), 
-             y = net_migration, 
-             fill = net_migration)) +
-  geom_bar(stat = "identity") +
-  scale_fill_viridis(option = "plasma") +
-  coord_flip() +
-  theme_light() +
-  ylab("Positive Net Migration, 2013-2017") +
-  labs(title = "Net Migration to the South: Top 50 Counties") +
-  theme(legend.position = "none", 
-        axis.title.y = element_blank()) +
-  ggsave("southern_county_to_county_bar.png", dpi = "retina")
-```
-
-### Choropleth
-```{r}
-states_sf <- get_urbn_map(map = "states", sf = TRUE)
-
-# join w/ movement data
-states_all_sf <- full_join(states_sf, state_all, by = c("state_name" = "a_state_name"))
-
-options(scipen = 999)
-states_all_sf %>%
-  ggplot() +
-  geom_sf(aes(fill = net_migration),
-          color = "snow", size = 0.5) +
-  scale_fill_gradient2(midpoint = 0, low = "red", mid = "bisque1", high = "royalblue2", 
-                       space = "Lab") + 
-  labs(title = "Net Migration by State, 2013-2017", fill = "") +
-  geom_sf_text(data = get_urbn_labels(map = "states", sf = TRUE), 
-               aes(label = state_abbv), size = 3) +
-  coord_sf(datum = NA) +
-  ggsave("states_net_migration.png", device = "png")
-
-```
 
 ## Complex Visuals
 
@@ -232,7 +158,7 @@ Nodes table:
 * State
 * Region
 
-```{r}
+```{r state nodes}
 state_nodes <- data.table(ID = unique(state_to_state$b_state_code),
                           Label = unique(state_to_state$b_state_name))
 fwrite(state_nodes, file = "state_nodes.csv")
@@ -246,7 +172,7 @@ Source: ** i think this will be only positive migration
 * inflow
 * outflow
 
-```{r}
+```{r state edges}
 state_edges <- state_to_state %>% transmute(Source = b_state_code,
                                             Target = a_state_code,
                                             inflow = inflow, 
@@ -376,7 +302,7 @@ This is a very large data set. To make it more intelligible visually, I made sev
 
 Even so, the resulting map had 32,466 connections. I then made two filtered maps - one with the top 10% of county migrations (~3,300) and one with the top 1% (~330)
 
-```{r counties}
+```{r county map}
 # 2a: load state latitude and longitude
 # source: https://www.census.gov/geographies/reference-files/time-series/geo/gazetteer-files.html
 county_latlong <- as.data.frame(fread("input/2019_Gaz_counties_national.csv", colClasses = "character"))
@@ -554,3 +480,79 @@ ggplot() +
 ```
 
 
+## Basic Visuals
+
+### Bar Graph: State Net Migration
+```{r useful references, include=FALSE}
+# https://www.datanovia.com/en/blog/ggplot-colors-best-tricks-you-will-love/#gradient-or-continuous-colors
+# https://github.com/UrbanInstitute/urbnmapr
+# http://www.endmemo.com/program/R/color.php 
+```
+
+
+```{r state bar graph}
+# turns off scientific notation
+options(scipen = 999)
+
+state_all %>%
+  arrange(desc(net_migration)) %>%
+  ggplot(aes(x = reorder(a_state_name, net_migration), 
+             y = net_migration, 
+             fill = net_migration)) +
+  geom_bar(stat = "identity") +
+  scale_fill_viridis(option = "plasma") +
+  coord_flip() +
+  theme_light() +
+  ylab("Net Migration") +
+  labs(title = "Positive Net Migration, 2013-2017") + 
+  theme(legend.position = "none", 
+        axis.title.y = element_blank()) +
+  ggsave("state_to_state_bar.png", dpi = "retina")
+
+
+```
+
+### Bar Graph: Top County Movements
+
+```{r top county movements}
+
+# 8: Visualize the Biggest County Movements
+summary_county %>% 
+  arrange(desc(net_migration)) %>%
+  top_n(50, net_migration) %>% 
+  mutate(journey = paste(b_county_name, USPS.y, "to", a_county_name, USPS.x, sep = " ")) %>%
+  ggplot(aes(x = reorder(journey, net_migration), 
+             y = net_migration, 
+             fill = net_migration)) +
+  geom_bar(stat = "identity") +
+  scale_fill_viridis(option = "plasma") +
+  coord_flip() +
+  theme_light() +
+  ylab("Positive Net Migration, 2013-2017") +
+  labs(title = "Net Migration to the South: Top 50 Counties") +
+  theme(legend.position = "none", 
+        axis.title.y = element_blank()) +
+  ggsave("southern_county_to_county_bar.png", dpi = "retina")
+```
+
+### Choropleth
+```{r choropleth}
+states_sf <- get_urbn_map(map = "states", sf = TRUE)
+
+# join w/ movement data
+states_all_sf <- full_join(states_sf, state_all, by = c("state_name" = "a_state_name"))
+
+options(scipen = 999)
+states_all_sf %>%
+  ggplot() +
+  geom_sf(aes(fill = net_migration),
+          color = "snow", size = 0.5) +
+  scale_fill_gradient2(midpoint = 0, low = "red", mid = "bisque1", high = "royalblue2", 
+                       space = "Lab") + 
+  labs(title = "Net Migration by State, 2013-2017", fill = "") +
+  geom_sf_text(data = get_urbn_labels(map = "states", sf = TRUE), 
+               aes(label = state_abbv), size = 3) +
+  coord_sf(datum = NA) +
+  ggsave("states_net_migration.png", device = "png")
+
+```

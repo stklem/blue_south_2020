@@ -1,5 +1,4 @@
 a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
-1,Alabama,1,Alabama,149897,149897,0
 1,Alabama,10,Delaware,48,148,-100
 1,Alabama,11,District of Columbia,212,310,-98
 1,Alabama,12,Florida,14362,11524,2838
@@ -70,7 +69,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 2,Alaska,17,Illinois,837,1429,-592
 2,Alaska,18,Indiana,254,314,-60
 2,Alaska,19,Iowa,166,891,-725
-2,Alaska,2,Alaska,18741,18741,0
 2,Alaska,20,Kansas,701,595,106
 2,Alaska,21,Kentucky,553,587,-34
 2,Alaska,22,Louisiana,421,633,-212
@@ -152,7 +150,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 4,Arizona,37,North Carolina,3882,4682,-800
 4,Arizona,38,North Dakota,1540,915,625
 4,Arizona,39,Ohio,4783,3079,1704
-4,Arizona,4,Arizona,120491,120491,0
 4,Arizona,40,Oklahoma,4258,2761,1497
 4,Arizona,41,Oregon,8906,7225,1681
 4,Arizona,42,Pennsylvania,5191,2644,2547
@@ -223,7 +220,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 5,Arkansas,47,Tennessee,4655,5796,-1141
 5,Arkansas,48,Texas,15042,13600,1442
 5,Arkansas,49,Utah,610,634,-24
-5,Arkansas,5,Arkansas,108444,108444,0
 5,Arkansas,50,Vermont,9,4,5
 5,Arkansas,51,Virginia,1012,695,317
 5,Arkansas,53,Washington,1028,1229,-201
@@ -291,7 +287,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 6,California,54,West Virginia,702,1225,-523
 6,California,55,Wisconsin,6841,5747,1094
 6,California,56,Wyoming,1570,2327,-757
-6,California,6,California,1070756,1070756,0
 6,California,72,Puerto Rico,2333,558,1775
 6,California,8,Colorado,20187,26672,-6485
 6,California,9,Connecticut,5159,3813,1346
@@ -354,7 +349,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 8,Colorado,56,Wyoming,4196,4746,-550
 8,Colorado,6,California,26672,20187,6485
 8,Colorado,72,Puerto Rico,449,17,432
-8,Colorado,8,Colorado,268927,268927,0
 8,Colorado,9,Connecticut,1652,670,982
 8,Colorado,AFR,Africa,2427,0,0
 8,Colorado,ASI,Asia,13664,0,0
@@ -416,7 +410,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 9,Connecticut,6,California,3813,5159,-1346
 9,Connecticut,72,Puerto Rico,3338,773,2565
 9,Connecticut,8,Colorado,670,1652,-982
-9,Connecticut,9,Connecticut,69088,69088,0
 9,Connecticut,AFR,Africa,958,0,0
 9,Connecticut,ASI,Asia,9473,0,0
 9,Connecticut,CAM,Central America,1075,0,0
@@ -427,7 +420,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 9,Connecticut,OCE,Oceania and At Sea,171,0,0
 9,Connecticut,SAM,South America,3290,0,0
 10,Delaware,1,Alabama,148,48,100
-10,Delaware,10,Delaware,10176,10176,0
 10,Delaware,11,District of Columbia,276,300,-24
 10,Delaware,12,Florida,1057,2317,-1260
 10,Delaware,13,Georgia,744,1139,-395
@@ -550,7 +542,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 12,Florida,1,Alabama,11524,14362,-2838
 12,Florida,10,Delaware,2317,1057,1260
 12,Florida,11,District of Columbia,1416,1883,-467
-12,Florida,12,Florida,618995,618995,0
 12,Florida,13,Georgia,39554,43536,-3982
 12,Florida,15,Hawaii,1696,2340,-644
 12,Florida,16,Idaho,1164,906,258
@@ -612,7 +603,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 13,Georgia,10,Delaware,1139,744,395
 13,Georgia,11,District of Columbia,1031,1159,-128
 13,Georgia,12,Florida,43536,39554,3982
-13,Georgia,13,Georgia,468374,468374,0
 13,Georgia,15,Hawaii,1317,1990,-673
 13,Georgia,16,Idaho,752,488,264
 13,Georgia,17,Illinois,8686,5284,3402
@@ -674,7 +664,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 15,Hawaii,11,District of Columbia,404,155,249
 15,Hawaii,12,Florida,2340,1696,644
 15,Hawaii,13,Georgia,1990,1317,673
-15,Hawaii,15,Hawaii,7948,7948,0
 15,Hawaii,16,Idaho,440,664,-224
 15,Hawaii,17,Illinois,1476,1156,320
 15,Hawaii,18,Indiana,670,798,-128
@@ -736,7 +725,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 16,Idaho,12,Florida,906,1164,-258
 16,Idaho,13,Georgia,488,752,-264
 16,Idaho,15,Hawaii,664,440,224
-16,Idaho,16,Idaho,55113,55113,0
 16,Idaho,17,Illinois,952,590,362
 16,Idaho,18,Indiana,126,375,-249
 16,Idaho,19,Iowa,253,505,-252
@@ -798,7 +786,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 17,Illinois,13,Georgia,5284,8686,-3402
 17,Illinois,15,Hawaii,1156,1476,-320
 17,Illinois,16,Idaho,590,952,-362
-17,Illinois,17,Illinois,329518,329518,0
 17,Illinois,18,Indiana,16104,32117,-16013
 17,Illinois,19,Iowa,8691,13997,-5306
 17,Illinois,2,Alaska,1429,837,592
@@ -860,7 +847,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 18,Indiana,15,Hawaii,798,670,128
 18,Indiana,16,Idaho,375,126,249
 18,Indiana,17,Illinois,32117,16104,16013
-18,Indiana,18,Indiana,238467,238467,0
 18,Indiana,19,Iowa,1571,2084,-513
 18,Indiana,2,Alaska,314,254,60
 18,Indiana,20,Kansas,1296,936,360
@@ -922,7 +908,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 19,Iowa,16,Idaho,505,253,252
 19,Iowa,17,Illinois,13997,8691,5306
 19,Iowa,18,Indiana,2084,1571,513
-19,Iowa,19,Iowa,114164,114164,0
 19,Iowa,2,Alaska,891,166,725
 19,Iowa,20,Kansas,2053,1906,147
 19,Iowa,21,Kentucky,462,967,-505
@@ -985,7 +970,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 20,Kansas,18,Indiana,936,1296,-360
 20,Kansas,19,Iowa,1906,2053,-147
 20,Kansas,2,Alaska,595,701,-106
-20,Kansas,20,Kansas,96720,96720,0
 20,Kansas,21,Kentucky,970,1205,-235
 20,Kansas,22,Louisiana,811,727,84
 20,Kansas,23,Maine,126,295,-169
@@ -1047,7 +1031,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 21,Kentucky,19,Iowa,967,462,505
 21,Kentucky,2,Alaska,587,553,34
 21,Kentucky,20,Kansas,1205,970,235
-21,Kentucky,21,Kentucky,172870,172870,0
 21,Kentucky,22,Louisiana,1006,921,85
 21,Kentucky,23,Maine,290,299,-9
 21,Kentucky,24,Maryland,1680,805,875
@@ -1108,7 +1091,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 22,Louisiana,2,Alaska,633,421,212
 22,Louisiana,20,Kansas,727,811,-84
 22,Louisiana,21,Kentucky,921,1006,-85
-22,Louisiana,22,Louisiana,153779,153779,0
 22,Louisiana,23,Maine,36,522,-486
 22,Louisiana,24,Maryland,851,616,235
 22,Louisiana,25,Massachusetts,698,559,139
@@ -1170,7 +1152,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 23,Maine,20,Kansas,295,126,169
 23,Maine,21,Kentucky,299,290,9
 23,Maine,22,Louisiana,522,36,486
-23,Maine,23,Maine,38665,38665,0
 23,Maine,24,Maryland,341,270,71
 23,Maine,25,Massachusetts,5937,3887,2050
 23,Maine,26,Michigan,210,376,-166
@@ -1232,7 +1213,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 24,Maryland,21,Kentucky,805,1680,-875
 24,Maryland,22,Louisiana,616,851,-235
 24,Maryland,23,Maine,270,341,-71
-24,Maryland,24,Maryland,166512,166512,0
 24,Maryland,25,Massachusetts,3009,3289,-280
 24,Maryland,26,Michigan,1666,1491,175
 24,Maryland,27,Minnesota,711,874,-163
@@ -1294,7 +1274,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 25,Massachusetts,22,Louisiana,559,698,-139
 25,Massachusetts,23,Maine,3887,5937,-2050
 25,Massachusetts,24,Maryland,3289,3009,280
-25,Massachusetts,25,Massachusetts,187038,187038,0
 25,Massachusetts,26,Michigan,1608,2455,-847
 25,Massachusetts,27,Minnesota,1116,1096,20
 25,Massachusetts,28,Mississippi,243,399,-156
@@ -1356,7 +1335,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 26,Michigan,23,Maine,376,210,166
 26,Michigan,24,Maryland,1491,1666,-175
 26,Michigan,25,Massachusetts,2455,1608,847
-26,Michigan,26,Michigan,373100,373100,0
 26,Michigan,27,Minnesota,2113,2573,-460
 26,Michigan,28,Mississippi,1324,1175,149
 26,Michigan,29,Missouri,2794,2826,-32
@@ -1418,7 +1396,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 27,Minnesota,24,Maryland,874,711,163
 27,Minnesota,25,Massachusetts,1096,1116,-20
 27,Minnesota,26,Michigan,2573,2113,460
-27,Minnesota,27,Minnesota,246763,246763,0
 27,Minnesota,28,Mississippi,342,151,191
 27,Minnesota,29,Missouri,1832,1977,-145
 27,Minnesota,30,Montana,652,1017,-365
@@ -1480,7 +1457,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 28,Mississippi,25,Massachusetts,399,243,156
 28,Mississippi,26,Michigan,1175,1324,-149
 28,Mississippi,27,Minnesota,151,342,-191
-28,Mississippi,28,Mississippi,107992,107992,0
 28,Mississippi,29,Missouri,1230,1584,-354
 28,Mississippi,30,Montana,253,188,65
 28,Mississippi,31,Nebraska,513,138,375
@@ -1543,7 +1519,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 30,Montana,27,Minnesota,1017,652,365
 30,Montana,28,Mississippi,188,253,-65
 30,Montana,29,Missouri,470,322,148
-30,Montana,30,Montana,34424,34424,0
 30,Montana,31,Nebraska,190,294,-104
 30,Montana,32,Nevada,797,856,-59
 30,Montana,33,New Hampshire,134,96,38
@@ -1605,7 +1580,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 31,Nebraska,28,Mississippi,138,513,-375
 31,Nebraska,29,Missouri,1935,3283,-1348
 31,Nebraska,30,Montana,294,190,104
-31,Nebraska,31,Nebraska,68648,68648,0
 31,Nebraska,32,Nevada,626,645,-19
 31,Nebraska,33,New Hampshire,84,46,38
 31,Nebraska,34,New Jersey,245,212,33
@@ -1667,7 +1641,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 32,Nevada,29,Missouri,1137,1440,-303
 32,Nevada,30,Montana,856,797,59
 32,Nevada,31,Nebraska,645,626,19
-32,Nevada,32,Nevada,25135,25135,0
 32,Nevada,33,New Hampshire,188,479,-291
 32,Nevada,34,New Jersey,1042,462,580
 32,Nevada,35,New Mexico,2247,1093,1154
@@ -1729,7 +1702,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 33,New Hampshire,30,Montana,96,134,-38
 33,New Hampshire,31,Nebraska,46,84,-38
 33,New Hampshire,32,Nevada,479,188,291
-33,New Hampshire,33,New Hampshire,32109,32109,0
 33,New Hampshire,34,New Jersey,668,368,300
 33,New Hampshire,35,New Mexico,55,315,-260
 33,New Hampshire,36,New York,3137,1875,1262
@@ -1791,7 +1763,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 34,New Jersey,31,Nebraska,212,245,-33
 34,New Jersey,32,Nevada,462,1042,-580
 34,New Jersey,33,New Hampshire,368,668,-300
-34,New Jersey,34,New Jersey,203535,203535,0
 34,New Jersey,35,New Mexico,386,398,-12
 34,New Jersey,36,New York,49877,32940,16937
 34,New Jersey,37,North Carolina,3664,11152,-7488
@@ -1853,7 +1824,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 35,New Mexico,32,Nevada,1093,2247,-1154
 35,New Mexico,33,New Hampshire,315,55,260
 35,New Mexico,34,New Jersey,398,386,12
-35,New Mexico,35,New Mexico,47458,47458,0
 35,New Mexico,36,New York,1083,993,90
 35,New Mexico,37,North Carolina,689,1100,-411
 35,New Mexico,38,North Dakota,39,138,-99
@@ -1915,7 +1885,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 36,New York,33,New Hampshire,1875,3137,-1262
 36,New York,34,New Jersey,32940,49877,-16937
 36,New York,35,New Mexico,993,1083,-90
-36,New York,36,New York,479012,479012,0
 36,New York,37,North Carolina,10270,25267,-14997
 36,New York,38,North Dakota,292,698,-406
 36,New York,39,Ohio,6119,9956,-3837
@@ -1977,7 +1946,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 37,North Carolina,34,New Jersey,11152,3664,7488
 37,North Carolina,35,New Mexico,1100,689,411
 37,North Carolina,36,New York,25267,10270,14997
-37,North Carolina,37,North Carolina,355961,355961,0
 37,North Carolina,38,North Dakota,510,145,365
 37,North Carolina,39,Ohio,9739,8474,1265
 37,North Carolina,4,Arizona,4682,3882,800
@@ -2039,7 +2007,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 38,North Dakota,35,New Mexico,138,39,99
 38,North Dakota,36,New York,698,292,406
 38,North Dakota,37,North Carolina,145,510,-365
-38,North Dakota,38,North Dakota,25040,25040,0
 38,North Dakota,39,Ohio,552,265,287
 38,North Dakota,4,Arizona,915,1540,-625
 38,North Dakota,40,Oklahoma,244,341,-97
@@ -2101,7 +2068,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 39,Ohio,36,New York,9956,6119,3837
 39,Ohio,37,North Carolina,8474,9739,-1265
 39,Ohio,38,North Dakota,265,552,-287
-39,Ohio,39,Ohio,392424,392424,0
 39,Ohio,4,Arizona,3079,4783,-1704
 39,Ohio,40,Oklahoma,1281,1408,-127
 39,Ohio,41,Oregon,1300,1035,265
@@ -2164,7 +2130,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 40,Oklahoma,38,North Dakota,341,244,97
 40,Oklahoma,39,Ohio,1408,1281,127
 40,Oklahoma,4,Arizona,2761,4258,-1497
-40,Oklahoma,40,Oklahoma,164417,164417,0
 40,Oklahoma,41,Oregon,502,1399,-897
 40,Oklahoma,42,Pennsylvania,1292,1110,182
 40,Oklahoma,44,Rhode Island,225,14,211
@@ -2226,7 +2191,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 41,Oregon,39,Ohio,1035,1300,-265
 41,Oregon,4,Arizona,7225,8906,-1681
 41,Oregon,40,Oklahoma,1399,502,897
-41,Oregon,41,Oregon,149897,149897,0
 41,Oregon,42,Pennsylvania,1802,1403,399
 41,Oregon,44,Rhode Island,153,88,65
 41,Oregon,45,South Carolina,631,546,85
@@ -2288,7 +2252,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 42,Pennsylvania,4,Arizona,2644,5191,-2547
 42,Pennsylvania,40,Oklahoma,1110,1292,-182
 42,Pennsylvania,41,Oregon,1403,1802,-399
-42,Pennsylvania,42,Pennsylvania,336067,336067,0
 42,Pennsylvania,44,Rhode Island,1085,897,188
 42,Pennsylvania,45,South Carolina,3165,7945,-4780
 42,Pennsylvania,46,South Dakota,380,131,249
@@ -2350,7 +2313,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 44,Rhode Island,40,Oklahoma,14,225,-211
 44,Rhode Island,41,Oregon,88,153,-65
 44,Rhode Island,42,Pennsylvania,897,1085,-188
-44,Rhode Island,44,Rhode Island,16913,16913,0
 44,Rhode Island,45,South Carolina,466,717,-251
 44,Rhode Island,46,South Dakota,21,79,-58
 44,Rhode Island,47,Tennessee,397,250,147
@@ -2412,7 +2374,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 45,South Carolina,41,Oregon,546,631,-85
 45,South Carolina,42,Pennsylvania,7945,3165,4780
 45,South Carolina,44,Rhode Island,717,466,251
-45,South Carolina,45,South Carolina,153003,153003,0
 45,South Carolina,46,South Dakota,274,203,71
 45,South Carolina,47,Tennessee,4157,4387,-230
 45,South Carolina,48,Texas,7058,6928,130
@@ -2474,7 +2435,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 46,South Dakota,42,Pennsylvania,131,380,-249
 46,South Dakota,44,Rhode Island,79,21,58
 46,South Dakota,45,South Carolina,203,274,-71
-46,South Dakota,46,South Dakota,36750,36750,0
 46,South Dakota,47,Tennessee,509,296,213
 46,South Dakota,48,Texas,1399,1433,-34
 46,South Dakota,49,Utah,297,282,15
@@ -2536,7 +2496,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 47,Tennessee,44,Rhode Island,250,397,-147
 47,Tennessee,45,South Carolina,4387,4157,230
 47,Tennessee,46,South Dakota,296,509,-213
-47,Tennessee,47,Tennessee,199276,199276,0
 47,Tennessee,48,Texas,11439,14342,-2903
 47,Tennessee,49,Utah,613,1032,-419
 47,Tennessee,5,Arkansas,5796,4655,1141
@@ -2598,7 +2557,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 48,Texas,45,South Carolina,6928,7058,-130
 48,Texas,46,South Dakota,1433,1399,34
 48,Texas,47,Tennessee,14342,11439,2903
-48,Texas,48,Texas,1073164,1073164,0
 48,Texas,49,Utah,6868,6335,533
 48,Texas,5,Arkansas,13600,15042,-1442
 48,Texas,50,Vermont,439,356,83
@@ -2660,7 +2618,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 49,Utah,46,South Dakota,282,297,-15
 49,Utah,47,Tennessee,1032,613,419
 49,Utah,48,Texas,6335,6868,-533
-49,Utah,49,Utah,95847,95847,0
 49,Utah,5,Arkansas,634,610,24
 49,Utah,50,Vermont,186,190,-4
 49,Utah,51,Virginia,2190,2084,106
@@ -2723,7 +2680,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 50,Vermont,48,Texas,356,439,-83
 50,Vermont,49,Utah,190,186,4
 50,Vermont,5,Arkansas,4,9,-5
-50,Vermont,50,Vermont,13851,13851,0
 50,Vermont,51,Virginia,399,586,-187
 50,Vermont,53,Washington,372,529,-157
 50,Vermont,54,West Virginia,44,24,20
@@ -2785,7 +2741,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 51,Virginia,49,Utah,2084,2190,-106
 51,Virginia,5,Arkansas,695,1012,-317
 51,Virginia,50,Vermont,586,399,187
-51,Virginia,51,Virginia,415462,415462,0
 51,Virginia,53,Washington,4723,5717,-994
 51,Virginia,54,West Virginia,6499,6062,437
 51,Virginia,55,Wisconsin,1498,1747,-249
@@ -2847,7 +2802,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 53,Washington,5,Arkansas,1229,1028,201
 53,Washington,50,Vermont,529,372,157
 53,Washington,51,Virginia,5717,4723,994
-53,Washington,53,Washington,221353,221353,0
 53,Washington,54,West Virginia,435,163,272
 53,Washington,55,Wisconsin,2630,1879,751
 53,Washington,56,Wyoming,783,1135,-352
@@ -2909,7 +2863,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 54,West Virginia,50,Vermont,24,44,-20
 54,West Virginia,51,Virginia,6062,6499,-437
 54,West Virginia,53,Washington,163,435,-272
-54,West Virginia,54,West Virginia,47747,47747,0
 54,West Virginia,55,Wisconsin,193,200,-7
 54,West Virginia,56,Wyoming,0,43,-43
 54,West Virginia,6,California,1225,702,523
@@ -2971,7 +2924,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 55,Wisconsin,51,Virginia,1747,1498,249
 55,Wisconsin,53,Washington,1879,2630,-751
 55,Wisconsin,54,West Virginia,200,193,7
-55,Wisconsin,55,Wisconsin,200677,200677,0
 55,Wisconsin,56,Wyoming,291,376,-85
 55,Wisconsin,6,California,5747,6841,-1094
 55,Wisconsin,72,Puerto Rico,1121,307,814
@@ -3033,7 +2985,6 @@ a_state_code,a_state_name,b_state_code,b_state_name,inflow,outflow,net_migration
 56,Wyoming,53,Washington,1135,783,352
 56,Wyoming,54,West Virginia,43,0,43
 56,Wyoming,55,Wisconsin,376,291,85
-56,Wyoming,56,Wyoming,16272,16272,0
 56,Wyoming,6,California,2327,1570,757
 56,Wyoming,72,Puerto Rico,21,0,21
 56,Wyoming,8,Colorado,4746,4196,550
