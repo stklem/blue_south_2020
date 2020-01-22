@@ -1,0 +1,556 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+## TODO:
+* write up an email, try to understand
+* make a confusion matrix, at least for state to state
+* make a chord diagram, using the census regions
+
+```{r libraries}
+library(tidyverse)
+library(data.table)
+# install.packages("devtools")
+# devtools::install_github("UrbanInstitute/urbnmapr")
+library(urbnmapr)
+#install.packages("jpeg")
+library(jpeg)
+library(grid)
+#install.packages("geosphere")
+library(geosphere)
+library(maps)
+library(sf)
+#install.packages("rgeos")
+library(rgeos)
+#install.packages("viridis")  # Install
+library("viridis")  
+
+```
+
+
+# Visual Set 1: Movement in and out of the South
+
+## Cleaning the Data
+1. Load data
+2. Remove margin of error columns
+3. Convert the numerical columns from characters to numeric types (removing commas first)
+4. Movement outside of the US is only specified at the country level and only includes inflows, not outflows. For simplification, the accompanying NAs in outflow and net migration will be converted to 0
+5. Created a separate data table that only include movement that involves southern states
+
+```{r cleaning}
+movement_county_to_county <- fread("input/migration_county_to_county_2013_2017.csv")
+
+# remove margin of error
+movement_county_to_county <- select(movement_county_to_county, -ends_with("moe"))
+
+# remove NAs (which are for rows that are not states)
+movement_county_to_county <- filter(movement_county_to_county, is.na(a_state_code) == FALSE)
+
+# convert numerical columns to numeric data type
+cols_to_change <- 9:ncol(movement_county_to_county)
+movement_county_to_county[cols_to_change] <-  as.numeric(str_remove(unlist(movement_county_to_county[cols_to_change]),","))
+movement_county_to_county$a_state_name <- as.factor(movement_county_to_county$a_state_name)
+
+# check NAs
+lapply(movement_county_to_county, function(x) length(which(is.na(x) == TRUE)))
+
+# convert NAs to 0
+movement_county_to_county[cols_to_change] <- as.numeric(replace_na(unlist(movement_county_to_county[cols_to_change]),"0"))
+
+# list of southern states
+southern_states <- c(1, 5, 12, 13, 21, 22, 28, 37, 45, 47, 48, 51, 54)
+names(southern_states) <- c("AL", "AR", "FL", "GA", "KY", "LA", "MS", "NC", "SC", "TN", "TX", "VA", "WV")    
+
+# filter to include only movements involving southern states
+south_county_to_county <- filter(movement_county_to_county, a_state_code %in% southern_states)
+
+```
+
+### All States
+Created three summary tables:
+
+| output table    | geography a  | geography b |
+|-----------------|:------------:|:-----------:|
+| county_to_state | county-level | state-level |
+| state_to_state  | state-level  | state-level |
+| state_all       | state-level  | -           |
+
+Note: for state_all, inflows - outflows != net migration because we only have inflows from other countries, not outflows
+
+```{r all}
+county_to_state <- movement_county_to_county %>% 
+  group_by(a_state_code, a_state_name, b_state_code, b_state_name, b_county_fips, b_county_name) %>%
+  summarize(inflow = sum(inflow),
+            outflow = sum(outflow), 
+            net_migration = sum(net_migration))
+fwrite(county_to_state, "output/county_to_state.csv")
+
+state_to_state <- movement_county_to_county %>% 
+  group_by(a_state_code, a_state_name, b_state_code, b_state_name) %>%
+  summarize(inflow = sum(inflow),
+            outflow = sum(outflow), 
+            net_migration = sum(net_migration))
+state_to_state <- setDT(state_to_state)
+#removing migration within the state
+state_to_state <- state_to_state[a_state_code != b_state_code]
+fwrite(state_to_state, "output/state_to_state.csv")
+
+state_all <- movement_county_to_county %>% 
+  group_by(a_state_code, a_state_name) %>%
+  summarize(inflow = sum(inflow),
+            outflow = sum(outflow), 
+            net_migration = sum(net_migration))
+fwrite(state_all, "output/state_all.csv")
+  
+```
+
+
+### Southern States
+
+Filtered data to include only movement in and out of Southern states. 
+
+For the purposes of this project, Southern states include: Alabama, Arkansas, Florida, Georgia, Kentucky, Louisiana, Mississippi, North Carolina, South Carolina, Tennessee, Texas, Virginia, and West Virginia
+
+| output table           | geography a  | geography b |
+|------------------------|:------------:|:-----------:|
+| south_ccounty_to_state | county-level | state-level |
+| south_cstate_to_state  | state-level  | state-level |
+| south_cstate_all       | state-level  | -           |
+
+```{r south}
+south_county_to_state <- south_county_to_county %>% 
+  group_by(a_state_code, a_state_name, b_state_code, b_state_name, b_county_fips, b_county_name) %>%
+  summarize(inflow = sum(inflow),
+            outflow = sum(outflow), 
+            net_migration = sum(net_migration))
+fwrite(south_county_to_state, "output/south_county_to_state.csv")
+
+south_state_to_state <- south_county_to_county %>% 
+  group_by(a_state_code, a_state_name, b_state_code, b_state_name) %>%
+  summarize(inflow = sum(inflow),
+            outflow = sum(outflow), 
+            net_migration = sum(net_migration))
+south_state_to_state <- setDT(south_state_to_state)
+#removing migration within the state
+south_state_to_state <- south_state_to_state[a_state_code != b_state_code]
+fwrite(south_state_to_state, "output/south_state_to_state.csv")
+
+
+south_state_all <- south_county_to_county %>% 
+  group_by(a_state_code, a_state_name) %>%
+  summarize(inflow = sum(inflow),
+            outflow = sum(outflow), 
+            net_migration = sum(net_migration))
+fwrite(south_state_all, "output/south_state_all.csv")
+
+```
+
+## Basic Visuals
+
+### Bar Graph: State Net Migration
+```{r useful references, include=FALSE}
+# https://www.datanovia.com/en/blog/ggplot-colors-best-tricks-you-will-love/#gradient-or-continuous-colors
+# https://github.com/UrbanInstitute/urbnmapr
+# http://www.endmemo.com/program/R/color.php 
+```
+
+
+```{r state bar graph}
+# turns off scientific notation
+options(scipen = 999)
+
+state_all %>%
+  arrange(desc(net_migration)) %>%
+  ggplot(aes(x = reorder(a_state_name, net_migration), 
+             y = net_migration, 
+             fill = net_migration)) +
+  geom_bar(stat = "identity") +
+  scale_fill_viridis(option = "plasma") +
+  coord_flip() +
+  theme_light() +
+  ylab("Positive Net Migration, 2013-2017") +
+  labs(title = "Net Migration") + 
+  theme(legend.position = "none", 
+        axis.title.y = element_blank()) +
+  ggsave("state_to_state_bar.png", dpi = "retina")
+
+
+```
+
+### Bar Graph: Top County Movements
+
+```{r top county movements}
+
+# 8: Visualize the Biggest County Movements
+summary_county %>% 
+  arrange(desc(net_migration)) %>%
+  top_n(50, net_migration) %>% 
+  mutate(journey = paste(b_county_name, USPS.y, "to", a_county_name, USPS.x, sep = " ")) %>%
+  ggplot(aes(x = reorder(journey, net_migration), 
+             y = net_migration, 
+             fill = net_migration)) +
+  geom_bar(stat = "identity") +
+  scale_fill_viridis(option = "plasma") +
+  coord_flip() +
+  theme_light() +
+  ylab("Positive Net Migration, 2013-2017") +
+  labs(title = "Net Migration to the South: Top 50 Counties") +
+  theme(legend.position = "none", 
+        axis.title.y = element_blank()) +
+  ggsave("southern_county_to_county_bar.png", dpi = "retina")
+```
+
+### Choropleth
+```{r}
+states_sf <- get_urbn_map(map = "states", sf = TRUE)
+
+# join w/ movement data
+states_all_sf <- full_join(states_sf, state_all, by = c("state_name" = "a_state_name"))
+
+options(scipen = 999)
+states_all_sf %>%
+  ggplot() +
+  geom_sf(aes(fill = net_migration),
+          color = "snow", size = 0.5) +
+  scale_fill_gradient2(midpoint = 0, low = "red", mid = "bisque1", high = "royalblue2", 
+                       space = "Lab") + 
+  labs(title = "Net Migration by State, 2013-2017", fill = "") +
+  geom_sf_text(data = get_urbn_labels(map = "states", sf = TRUE), 
+               aes(label = state_abbv), size = 3) +
+  coord_sf(datum = NA) +
+  ggsave("states_net_migration.png", device = "png")
+
+```
+
+## Complex Visuals
+
+### Network Analysis with Gephi 
+Nodes table:
+* ID: generate unique
+* Label: County, State Abrev (a and b combined into one list, i think only including the counties that end up in the analysis)
+* State
+* Region
+
+```{r}
+state_nodes <- data.table(ID = unique(state_to_state$b_state_code),
+                          Label = unique(state_to_state$b_state_name))
+fwrite(state_nodes, file = "state_nodes.csv")
+```
+
+
+Source: ** i think this will be only positive migration
+* Source: ID of b state/county
+* Target: ID of a state/county
+* net_migration: to add weights
+* inflow
+* outflow
+
+```{r}
+state_edges <- state_to_state %>% transmute(Source = b_state_code,
+                                            Target = a_state_code,
+                                            inflow = inflow, 
+                                            weight = inflow / 10000)
+fwrite(state_edges, file = "state_edges.csv")
+```
+
+#### Network Analysis Visuals
+State to state migration, representing the "inflow" amounts from state to state, rather than net migration. The network was filtered to include only inflows that were >= 10,000 and states that have 2 or more inflows of that size
+
+*Version 1: Unweighted*:
+INSERT IMAGE
+
+*Version 2: Weighted*:
+INSERT IMAGE
+
+### State to State Migration Map
+
+```{r my map}
+# 2: load state latitude and longitude
+state_latlong <- fread("input/statelatlong.csv")
+
+# 3a: add lat/long for state a
+summary_state <- left_join(state_to_state, state_latlong, by = c("a_state_name" = "state_name")) 
+summary_state <- summary_state %>% rename(a_latitude = latitude)
+summary_state <- summary_state %>% rename(a_longitude = longitude)
+
+# 3b: add lat/long for state a
+summary_state <- left_join(summary_state, state_latlong, by = c("b_state_name" = "state_name")) 
+summary_state <- summary_state %>% rename(b_latitude = latitude)
+summary_state <- summary_state %>% rename(b_longitude = longitude)
+
+# 3c: remove rows where lon/lat are NA
+summary_state <- na.omit(summary_state)
+
+# 3d: remove alaska and hawaii, for simplicity
+summary_state <- setDT(summary_state)
+summary_state <- summary_state[a_state_name != "Alaska"]
+summary_state <- summary_state[a_state_name != "Hawaii"]
+summary_state <- summary_state[b_state_name != "Alaska"]
+summary_state <- summary_state[b_state_name != "Hawaii"]
+
+# 3e: remove negatives
+summary_state <- summary_state[net_migration > 0]
+
+# 4: rank by importance, aka by absolute value of net migration
+#state_to_state <- state_to_state %>% mutate(positive = ifelse(net_migration >= 0, TRUE, FALSE),
+#                              net_migration_abs = abs(net_migration))
+summary_state <- summary_state %>% arrange(net_migration)
+
+
+
+# 5: A function that makes a dateframe per connection (we will use these connections to plot each lines)
+data_for_connection=function( dep_lon, dep_lat, arr_lon, arr_lat, group){
+  inter <- gcIntermediate(c(dep_lon, dep_lat), 
+                          c(arr_lon, arr_lat), 
+                          n=50, 
+                          addStartEnd=TRUE, 
+                          breakAtDateLine=F)
+  inter <- data.frame(inter)
+  inter$group <- group
+  return(inter)
+}
+
+
+# 6: create a combined data frame
+data_plot <- data.frame()
+for(i in c(1:nrow(summary_state))){
+  tmp <- data_for_connection(summary_state$a_longitude[i], 
+                             summary_state$a_latitude[i], 
+                             summary_state$b_longitude[i], 
+                             summary_state$b_latitude[i], 
+                             i)
+  tmp$net_migration <- summary_state$net_migration[i]
+  data_plot <- rbind(data_plot, tmp)
+}
+
+
+# 7: Plot
+ggplot() +
+  geom_sf(data = st_as_sf(map("state", plot = FALSE, fill = TRUE)),  aes(), 
+          fill = "black", color = "#f2f2f2", size = 1) +
+  geom_sf_text(data = get_urbn_labels(map = "states", sf = TRUE), 
+               aes(label = state_abbv), color = "white",
+               size = 6) +
+  geom_path(data = data_plot, 
+            aes(x = lon, y = lat, group = group, color = log(net_migration), alpha = net_migration), 
+            size = 2) +
+  scale_color_viridis(option = "plasma") +
+  #scale_fill_manual(values = c("bisque1", "#59a650")) +
+  theme(
+    #legend.position = "none",
+    panel.background = element_rect(fill = "black", colour = "black"), 
+    panel.spacing = unit(c(0,0,0,0), "null"),
+    plot.margin = grid::unit(c(0,0,0,0), "cm"),
+  ) +
+  scale_x_continuous(expand = c(0.006, 0.006)) +
+  ggsave("state_to_state_migration1.png", width = 26, height = 15.22, units = "in", dpi = "retina")
+
+ggplot() +
+  geom_sf(data = st_as_sf(map("state", plot = FALSE, fill = TRUE)),  aes(), 
+          fill = "black", color = "#f2f2f2", size = 1) +
+  geom_sf_text(data = get_urbn_labels(map = "states", sf = TRUE), 
+               aes(label = state_abbv), color = "white",
+               size = 6) +
+  geom_path(data = data_plot, 
+            aes(x = lon, y = lat, group = group, color = net_migration, alpha = net_migration), 
+            size = 2) +
+  scale_color_viridis(option = "plasma") +
+  #scale_fill_manual(values = c("bisque1", "#59a650")) +
+  theme(
+    #legend.position = "none",
+    panel.background = element_rect(fill = "black", colour = "black"), 
+    panel.spacing = unit(c(0,0,0,0), "null"),
+    plot.margin = grid::unit(c(0,0,0,0), "cm"),
+  ) +
+  scale_x_continuous(expand = c(0.006, 0.006)) +
+  ggsave("state_to_state_migration2.png", width = 26, height = 15.22, units = "in", dpi = "retina")
+
+```
+
+
+
+### County to County Migration Map
+
+This is a very large data set. To make it more intelligible visually, I made several adjustments: only included positive migration into Southern states, omitted movement between counties within the South
+
+Even so, the resulting map had 32,466 connections. I then made two filtered maps - one with the top 10% of county migrations (~3,300) and one with the top 1% (~330)
+
+```{r counties}
+# 2a: load state latitude and longitude
+# source: https://www.census.gov/geographies/reference-files/time-series/geo/gazetteer-files.html
+county_latlong <- as.data.frame(fread("input/2019_Gaz_counties_national.csv", colClasses = "character"))
+county_latlong <- county_latlong %>% mutate(INTPTLAT = as.numeric(INTPTLAT),
+                                            INTPTLONG = as.numeric(INTPTLONG))
+county_latlong$ANSICODE <- NULL
+county_latlong$ALAND <- NULL
+county_latlong$AWATER <- NULL
+county_latlong$ALAND_SQMI <- NULL
+county_latlong$AWATER_SQMI <- NULL
+
+# 2b: impute combined state and county fips
+south_county_to_county$a_fips <- as.character(paste(south_county_to_county$a_state_code,
+                                                      formatC(south_county_to_county$a_county_fips,
+                                                              width = 3, flag = "0"), sep = ""))
+south_county_to_county$b_fips <- as.character(paste(south_county_to_county$b_state_code,
+                                                      formatC(south_county_to_county$b_county_fips,
+                                                              width = 3, flag = "0"), sep = ""))
+
+# 3a - 1: add lat/long for state a --- all counties
+#summary_county <- left_join(movement_county_to_county, county_latlong, by = c("a_fips" = "GEOID")) 
+#summary_county <- summary_county %>% rename(a_latitude = INTPTLAT)
+#summary_county <- summary_county %>% rename(a_longitude = INTPTLONG)
+
+# 3a - 2: add lat/long for state a --- southern counties
+summary_county <- left_join(south_county_to_county, county_latlong, by = c("a_fips" = "GEOID")) 
+summary_county <- summary_county %>% rename(a_latitude = INTPTLAT)
+summary_county <- summary_county %>% rename(a_longitude = INTPTLONG)
+
+# 3b: add lat/long for state a
+summary_county <- left_join(summary_county, county_latlong, by = c("b_fips" = "GEOID")) 
+summary_county <- summary_county %>% rename(b_latitude = INTPTLAT)
+summary_county <- summary_county %>% rename(b_longitude = INTPTLONG)
+
+# 3c: remove rows where lon/lat are NA
+summary_county <- na.omit(summary_county)
+
+# 3d: remove alaska and hawaii, for simplicity
+summary_county <- setDT(summary_county)
+summary_county <- summary_county[a_state_name != "Alaska"]
+summary_county <- summary_county[a_state_name != "Hawaii"]
+summary_county <- summary_county[b_state_name != "Alaska"]
+summary_county <- summary_county[b_state_name != "Hawaii"]
+
+# 3e: remove movement within the same state
+summary_county <- summary_county[a_state_name != b_state_name]
+
+# 3f: remove movement between southern states
+summary_county$b_state_code <- as.numeric(summary_county$b_state_code)
+summary_county <- summary_county[b_state_code %in% southern_states == FALSE]
+
+# 3g: remove negatives
+summary_county <- summary_county[net_migration > 0]
+
+# 4: visualize, to get a sense of distribution
+summary_county %>% ggplot(aes(x = net_migration)) +
+  geom_histogram()
+
+table(summary_county$net_migration)
+
+summary_county_top <- summary_county %>% top_frac(0.1, net_migration)
+
+summary_county_top %>% ggplot(aes(x = net_migration)) +
+  geom_histogram()
+
+table(summary_county_top$net_migration)
+
+# 4: rank by importance, aka by absolute value of net migration
+# <- summary_county %>% mutate(positive = ifelse(net_migration >= 0, TRUE, FALSE),
+#                              net_migration_abs = abs(net_migration))
+summary_county <- summary_county %>% arrange(net_migration)
+
+# 5: A function that makes a dateframe per connection (we will use these connections to plot each lines)
+data_for_connection=function( dep_lon, dep_lat, arr_lon, arr_lat, group){
+  inter <- gcIntermediate(c(dep_lon, dep_lat), 
+                          c(arr_lon, arr_lat), 
+                          n=50, 
+                          addStartEnd=TRUE, 
+                          breakAtDateLine=F)
+  inter <- data.frame(inter)
+  inter$group <- group
+  return(inter)
+}
+
+# 6: create a combined data frame
+data_plot_county2 <- data.frame()
+for(i in c(1:nrow(summary_county))){
+  tmp <- data_for_connection(summary_county$a_longitude[i], 
+                             summary_county$a_latitude[i], 
+                             summary_county$b_longitude[i], 
+                             summary_county$b_latitude[i], 
+                             i)
+  tmp$net_migration <- summary_county$net_migration[i]
+  data_plot_county2 <- rbind(data_plot_county2, tmp)
+}
+
+data_plot_county_top_10<- data.frame()
+for(i in c(1:nrow(summary_county_top))){
+  tmp <- data_for_connection(summary_county_top$a_longitude[i], 
+                             summary_county_top$a_latitude[i], 
+                             summary_county_top$b_longitude[i], 
+                             summary_county_top$b_latitude[i], 
+                             i)
+  tmp$net_migration <- summary_county$net_migration[i]
+  data_plot_county2 <- rbind(data_plot_county2, tmp)
+}
+
+# make a smaller dataset w/ top 10 largest in net migration
+data_plot_county_top <- data_plot_county2 %>% top_frac(0.1, net_migration)
+
+
+
+# 7a: Plot - all migration to southern counties
+ggplot() +
+  geom_sf(data = st_as_sf(map("state", plot = FALSE, fill = TRUE)),  aes(), 
+          fill = "black", color = "#f2f2f2", size = 1) +
+  geom_sf_text(data = get_urbn_labels(map = "states", sf = TRUE), 
+               aes(label = state_abbv), color = "white",
+               size = 6) +
+  geom_path(data = data_plot_county2, 
+            aes(x = lon, y = lat, group = group, color = net_migration, alpha = net_migration), 
+            size = 2) +
+  scale_color_viridis(option = "plasma") +
+  #scale_fill_manual(values = c("bisque1", "#59a650")) +
+  theme(
+    #legend.position = "none",
+    panel.background = element_rect(fill = "black", colour = "black"), 
+    panel.spacing = unit(c(0,0,0,0), "null"),
+    plot.margin = grid::unit(c(0,0,0,0), "cm")) +
+  scale_x_continuous(expand = c(0.006, 0.006)) +
+  ggsave("southern_county_to_county_migration.png", width = 26, height = 15.22, units = "in", dpi = "retina")
+
+
+# 7b: Plot - top 10% of migration to southern counties
+ggplot() +
+  geom_sf(data = st_as_sf(map("state", plot = FALSE, fill = TRUE)),  aes(), 
+          fill = "black", color = "#f2f2f2", size = 1) +
+  geom_sf_text(data = get_urbn_labels(map = "states", sf = TRUE), 
+               aes(label = state_abbv), color = "white",
+               size = 6) +
+  geom_path(data = data_plot_county2 %>% top_frac(0.10, net_migration), 
+            aes(x = lon, y = lat, group = group, color = net_migration, alpha = net_migration), 
+            size = 2) +
+  scale_color_viridis(option = "plasma") +
+  #scale_fill_manual(values = c("bisque1", "#59a650")) +
+  theme(
+    #legend.position = "none",
+    panel.background = element_rect(fill = "black", colour = "black"), 
+    panel.spacing = unit(c(0,0,0,0), "null"),
+    plot.margin = grid::unit(c(0,0,0,0), "cm")) +
+  scale_x_continuous(expand = c(0.006, 0.006)) +
+  ggsave("southern_county_to_county_migration_top10.png", width = 26, height = 15.22, units = "in", dpi = "retina")
+
+
+# 7c: Plot - top 1% of migration to southern counties
+ggplot() +
+  geom_sf(data = st_as_sf(map("state", plot = FALSE, fill = TRUE)),  aes(), 
+          fill = "black", color = "#f2f2f2", size = 1) +
+  geom_sf_text(data = get_urbn_labels(map = "states", sf = TRUE), 
+               aes(label = state_abbv), color = "white",
+               size = 6) +
+  geom_path(data = data_plot_county2 %>% top_frac(0.01, net_migration), 
+            aes(x = lon, y = lat, group = group, color = net_migration, alpha = net_migration), 
+            size = 2) +
+  scale_color_viridis(option = "plasma") +
+  #scale_fill_manual(values = c("bisque1", "#59a650")) +
+  theme(
+    #legend.position = "none",
+    panel.background = element_rect(fill = "black", colour = "black"), 
+    panel.spacing = unit(c(0,0,0,0), "null"),
+    plot.margin = grid::unit(c(0,0,0,0), "cm")) +
+  scale_x_continuous(expand = c(0.006, 0.006)) +
+  ggsave("southern_county_to_county_migration_top1.png", width = 26, height = 15.22, units = "in", dpi = "retina")
+
+```
+
+

@@ -1,0 +1,62 @@
+ID,State_Name,Region,Label
+AFR,Africa,International,AFR
+1,Alabama,Southeast,AL
+2,Alaska,Alaska,AK
+4,Arizona,Southwest,AZ
+5,Arkansas,Southeast,AR
+ASI,Asia,International,ASI
+6,California,Pacific,CA
+CAR,Caribbean,International,CAR
+CAM,Central America,International,CAM
+8,Colorado,Southwest,CO
+9,Connecticut,Northeast,CT
+10,Delaware,Northeast,DE
+11,District of Columbia,Northeast,DC
+EUR,Europe,International,EUR
+12,Florida,Southeast,FL
+13,Georgia,Southeast,GA
+15,Hawaii,Pacific,HI
+16,Idaho,Northwest,ID
+17,Illinois,Midwest,IL
+18,Indiana,Midwest,IN
+19,Iowa,Midwest,IA
+20,Kansas,Southwest,KS
+21,Kentucky,Southeast,KY
+22,Louisiana,Southeast,LA
+23,Maine,Northeast,ME
+24,Maryland,Northeast,MD
+25,Massachusetts,Northeast,MA
+26,Michigan,Midwest,MI
+27,Minnesota,Midwest,MN
+28,Mississippi,Southeast,MS
+29,Missouri,Midwest,MO
+30,Montana,Northwest,MT
+31,Nebraska,Midwest,NE
+32,Nevada,Pacific,NV
+33,New Hampshire,Northeast,NH
+34,New Jersey,Northeast,NJ
+35,New Mexico,Southwest,NM
+36,New York,Northeast,NY
+37,North Carolina,Southeast,NC
+38,North Dakota,Midwest,ND
+NAM,Northern America,International,NAM
+OCE,Oceania and At Sea,International,OCE
+39,Ohio,Midwest,OH
+40,Oklahoma,Southwest,OK
+41,Oregon,Northwest,OR
+42,Pennsylvania,Northeast,PA
+72,Puerto Rico,International,PR
+44,Rhode Island,Northeast,RI
+SAM,South America,International,SAM
+45,South Carolina,Southeast,SC
+46,South Dakota,Midwest,SD
+47,Tennessee,Southeast,TN
+48,Texas,Southeast,TX
+ISL,U.S. Island Areas,International,ISL
+49,Utah,Southwest,UT
+50,Vermont,Northeast,VT
+51,Virginia,Southeast,VA
+53,Washington,Northwest,WA
+54,West Virginia,Southeast,WV
+55,Wisconsin,Midwest,WI
+56,Wyoming,Northwest,WY
