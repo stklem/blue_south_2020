@@ -1,0 +1,193 @@
+state,city,allocation
+AL,Auburn,100000
+AL,Birmingham,410000
+AL,Mobile,20000
+AL,Montgomery,273300
+AL,Selma,375000
+AR,Batesville,105000
+AR,Bentonville,50000
+AR,Fayetteville,150000
+AR,Jonesboro,23600
+AR,Little Rock,2854515
+AR,Lowell,40000
+AR,Marvell,43553
+AR,McGehee,15900
+AR,Monticello,10000
+AR,North Little Rock,138894
+AR,Pine Bluff,30000
+AR,Springdale,147500
+CO,Boulder,30000
+DC,Washington,37700
+FL,Apopka,52000
+FL,Aventura,5000
+FL,Clearwater,10000
+FL,Davie,5000
+FL,Fort Lauderdale,83623
+FL,"Fort Lauderdale, FL",30000
+FL,Ft. Lauderdale,97535
+FL,Lake Worth,10250
+FL,Maitland,30000
+FL,Miami,57750
+FL,Miami Beach,5000
+FL,Orlando,310997
+FL,Pembroke Park,9337
+FL,Pompano Beach,6000
+FL,St. Petersburg,81500
+FL,Tallahassee,6000
+FL,West Palm Beach,5000
+FL,Wilton Manors,222443
+GA,Albany,10000
+GA,Athens,175000
+GA,Atlanta,2882500
+GA,Augusta,15000
+GA,Clarkston,15000
+GA,Cleveland,125000
+GA,College Park,175000
+GA,Decatur,15000
+GA,East Point,160000
+GA,Norcross,190000
+GA,Project Support,25000
+GA,Savannah,290000
+KS,Lenexa,15000
+KY,Berea,2265000
+KY,Hazard,257500
+KY,Kentucky,35000
+KY,Lexington,1006800
+KY,London,1372500
+KY,Whitesburg,436000
+LA,Arabi,19801
+LA,Avondale,5399
+LA,Baton Rouge,3894343
+LA,Belle Chasse,15882
+LA,Bourg,9188
+LA,Chalmette,14000
+LA,Chauvin,5000
+LA,Collinston,8735
+LA,Covington,240555
+LA,Destrehan,37985
+LA,Folsom,8142
+LA,Franklin,10000
+LA,Golden Meadow,21712
+LA,Gretna,95092
+LA,Hammond,10500
+LA,Harahan,9661
+LA,Harvey,10500
+LA,Houma,326523
+LA,Jefferson,46929
+LA,Kenner,12390
+LA,Lafayette,5000
+LA,Larose,15000
+LA,Luling,5000
+LA,Marrero,11546
+LA,Mathews,5000
+LA,Metairie,1013159
+LA,Monroe,210000
+LA,New Iberia,100000
+LA,New Orleans,26212874
+LA,Norco,173514
+LA,Sapphire,29200
+LA,Schriever,21255
+LA,Shreveport,25000
+LA,Slidell,12000
+LA,St. Benedict,9300
+LA,Thibodaux,187650
+LA,Waggaman,300
+MS,Bay St. Louis,30000
+MS,Jackson,3020000
+NC,Arden,61000
+NC,Asheville,1277384
+NC,Benson,35000
+NC,Black Mountain,25000
+NC,Bolivia,45000
+NC,Boone,200000
+NC,Buies Creek,50000
+NC,Burke County,646394
+NC,Burlington,260000
+NC,Bynum,22000
+NC,Carrboro,10000
+NC,Cary,2155000
+NC,Chapel Hill,953442
+NC,Charlotte,1404868
+NC,Cherokee,20000
+NC,Durham,3782164
+NC,Eden,35000
+NC,Fayetteville,35000
+NC,Franklin,30000
+NC,Greensboro,495000
+NC,Greenville,260000
+NC,Henderson,25000
+NC,Hendersonville,130000
+NC,High Point,35000
+NC,Hollister,5000
+NC,Kernersville,302500
+NC,Kinston,30000
+NC,Kitty Hawk,25000
+NC,Lexington,35000
+NC,Marion,957612
+NC,Mebane,25000
+NC,Montreat,18000
+NC,Morganton,5000
+NC,Morgantown,35000
+NC,Murphy,20000
+NC,New Bern,25000
+NC,Newport,110000
+NC,Patterson,20000
+NC,Pittsboro,75000
+NC,Raeford,292831
+NC,Raleigh,8426806
+NC,Research Triangle Park,33775
+NC,Rich Square,200000
+NC,Robbins,25000
+NC,Robbinsville,25000
+NC,Rockingham County,165000
+NC,Rocky Mount,962101
+NC,Sanford,20000
+NC,Seagrove,35000
+NC,Shelby,20000
+NC,Siler City,30000
+NC,Spring Lake,30000
+NC,St. Pauls,40000
+NC,Star,50000
+NC,Swan Quarter,20000
+NC,Valdese,30000
+NC,Warrenton,20000
+NC,Washington,154000
+NC,Waynesville,531286
+NC,West Jefferson,80000
+NC,Whitakers,20000
+NC,Wilmington,541049
+NC,Wilson,265150
+NC,Winston-Salem,3474858
+NY,New York,308714
+SC,Anderson,175000
+SC,Charleston,2730000
+SC,Columbia,20000
+SC,Conway,11000
+SC,Greenville,991311
+SC,North Charleston,15000
+TN,Duff,1500
+TN,Eagan,1500
+TN,Knoxville,1000
+TN,Memphis,9704
+TN,Nashville,15000
+TN,Rockford,74100
+TN,Sewanee,5000
+TX,Austin,79187
+TX,Dallas,15000
+TX,Harlingen,15000
+TX,Magnolia,8400
+TX,San Antonio,11293
+VA,Abingdon,2000
+VA,Alexandria,37500
+VA,Arlington,5000
+VA,Charlottesville,10600
+VA,Gate City,1000
+VA,Lexington,18750
+VA,Lynchburg,5000
+VA,North Chesterfield,5000
+VA,Reston,10000
+VA,Staunton,20000
+VA,Virginia Beach,74100
+WV,Charleston,775000
+WV,Shepherdstown,25000
+WV,Wayne,215000

@@ -1,0 +1,237 @@
+foundation,state,city,allocation
+ACF,KY,Lexington,1800
+ACF,KY,Whitesburg,1000
+ACF,TN,Duff,1500
+ACF,TN,Eagan,1500
+ACF,TN,Knoxville,1000
+ACF,VA,Abingdon,2000
+ACF,VA,Gate City,1000
+BCM,LA,Baton Rouge,578639
+BCM,LA,Covington,169440
+BCM,LA,Harvey,10500
+BCM,LA,Metairie,154085
+BCM,LA,New Orleans,7012477
+BCM,LA,Waggaman,300
+BCM,TX,Austin,49187
+Contigo Fund,CO,Boulder,30000
+Contigo Fund,DC,Washington,37700
+Contigo Fund,FL,Apopka,52000
+Contigo Fund,FL,Aventura,5000
+Contigo Fund,FL,Clearwater,10000
+Contigo Fund,FL,Davie,5000
+Contigo Fund,FL,Fort Lauderdale,83623
+Contigo Fund,FL,"Fort Lauderdale, FL",30000
+Contigo Fund,FL,Ft. Lauderdale,97535
+Contigo Fund,FL,Lake Worth,10250
+Contigo Fund,FL,Maitland,30000
+Contigo Fund,FL,Miami,57750
+Contigo Fund,FL,Miami Beach,5000
+Contigo Fund,FL,Orlando,310997
+Contigo Fund,FL,Pompano Beach,6000
+Contigo Fund,FL,St. Petersburg,81500
+Contigo Fund,FL,West Palm Beach,5000
+Contigo Fund,FL,Wilton Manors,222443
+Contigo Fund,KS,Lenexa,15000
+Contigo Fund,NY,New York,208714
+FFL,AL,Montgomery,5000
+FFL,GA,Atlanta,166000
+FFL,LA,Baton Rouge,232500
+FFL,LA,Franklin,10000
+FFL,LA,Gretna,60000
+FFL,LA,Monroe,10000
+FFL,LA,New Orleans,1053550
+FFL,LA,Shreveport,25000
+FFL,LA,Thibodaux,30000
+FFL,NC,Asheville,15000
+FFL,NY,New York,100000
+FFL,TX,Harlingen,15000
+GNOF,AL,Auburn,100000
+GNOF,AL,Mobile,20000
+GNOF,AL,Montgomery,8300
+GNOF,AR,Bentonville,50000
+GNOF,FL,Pembroke Park,9337
+GNOF,FL,Tallahassee,6000
+GNOF,GA,Atlanta,21500
+GNOF,LA,Arabi,19801
+GNOF,LA,Avondale,5399
+GNOF,LA,Baton Rouge,2933204
+GNOF,LA,Belle Chasse,15882
+GNOF,LA,Bourg,9188
+GNOF,LA,Chalmette,14000
+GNOF,LA,Chauvin,5000
+GNOF,LA,Collinston,8735
+GNOF,LA,Covington,71115
+GNOF,LA,Destrehan,37985
+GNOF,LA,Folsom,8142
+GNOF,LA,Golden Meadow,21712
+GNOF,LA,Gretna,35092
+GNOF,LA,Hammond,10500
+GNOF,LA,Harahan,9661
+GNOF,LA,Houma,326523
+GNOF,LA,Jefferson,46929
+GNOF,LA,Kenner,12390
+GNOF,LA,Lafayette,5000
+GNOF,LA,Larose,15000
+GNOF,LA,Luling,5000
+GNOF,LA,Marrero,11546
+GNOF,LA,Mathews,5000
+GNOF,LA,Metairie,859074
+GNOF,LA,New Orleans,17456847
+GNOF,LA,Norco,173514
+GNOF,LA,Sapphire,29200
+GNOF,LA,Schriever,21255
+GNOF,LA,Slidell,12000
+GNOF,LA,St. Benedict,9300
+GNOF,LA,Thibodaux,157650
+GNOF,MS,Bay St. Louis,30000
+GNOF,NC,Arden,61000
+GNOF,NC,Asheville,10000
+GNOF,NC,Black Mountain,5000
+GNOF,NC,Montreat,18000
+GNOF,NC,Raleigh,10000
+GNOF,TN,Memphis,9704
+GNOF,TN,Rockford,74100
+GNOF,TN,Sewanee,5000
+GNOF,TX,Austin,30000
+GNOF,TX,Dallas,15000
+GNOF,TX,Magnolia,8400
+GNOF,TX,San Antonio,11293
+GNOF,VA,Alexandria,37500
+GNOF,VA,Arlington,5000
+GNOF,VA,Charlottesville,10600
+GNOF,VA,Lexington,18750
+GNOF,VA,Lynchburg,5000
+GNOF,VA,North Chesterfield,5000
+GNOF,VA,Reston,10000
+GNOF,VA,Staunton,20000
+GNOF,VA,Virginia Beach,74100
+GNOF,WV,Charleston,10000
+KBR,NC,Asheville,347384
+KBR,NC,Burke County,646394
+KBR,NC,Cary,2050000
+KBR,NC,Charlotte,833368
+KBR,NC,Kernersville,302500
+KBR,NC,Marion,957612
+KBR,NC,Raleigh,2287700
+KBR,NC,Rockingham County,165000
+KBR,NC,Rocky Mount,922101
+KBR,NC,Washington,154000
+KBR,NC,Waynesville,506286
+KBR,NC,Wilmington,401049
+KBR,NC,Wilson,205150
+KBR,NC,Winston-Salem,2267858
+MRBF,AL,Birmingham,410000
+MRBF,AL,Montgomery,260000
+MRBF,AL,Selma,375000
+MRBF,AR,Little Rock,565000
+MRBF,GA,Albany,10000
+MRBF,GA,Athens,175000
+MRBF,GA,Atlanta,2685000
+MRBF,GA,Augusta,15000
+MRBF,GA,Clarkston,15000
+MRBF,GA,Cleveland,125000
+MRBF,GA,College Park,175000
+MRBF,GA,Decatur,15000
+MRBF,GA,East Point,160000
+MRBF,GA,Norcross,190000
+MRBF,GA,Project Support,25000
+MRBF,GA,Savannah,290000
+MRBF,KY,Berea,2265000
+MRBF,KY,Hazard,257500
+MRBF,KY,Kentucky,35000
+MRBF,KY,Lexington,1005000
+MRBF,KY,London,1372500
+MRBF,KY,Whitesburg,435000
+MRBF,LA,Baton Rouge,150000
+MRBF,LA,Monroe,200000
+MRBF,LA,New Iberia,100000
+MRBF,LA,New Orleans,690000
+MRBF,MS,Jackson,3020000
+MRBF,NC,Asheville,60000
+MRBF,NC,Boone,125000
+MRBF,NC,Burlington,200000
+MRBF,NC,Durham,1410000
+MRBF,NC,Greensboro,215000
+MRBF,NC,Raleigh,2106106
+MRBF,NC,Rich Square,100000
+MRBF,NC,Winston-Salem,392000
+MRBF,SC,Anderson,175000
+MRBF,SC,Charleston,2730000
+MRBF,SC,Columbia,20000
+MRBF,SC,Greenville,991311
+MRBF,SC,North Charleston,15000
+MRBF,TN,Nashville,15000
+MRBF,WV,Charleston,765000
+MRBF,WV,Shepherdstown,25000
+MRBF,WV,Wayne,215000
+WRF,AR,Batesville,105000
+WRF,AR,Fayetteville,150000
+WRF,AR,Jonesboro,23600
+WRF,AR,Little Rock,2289515
+WRF,AR,Lowell,40000
+WRF,AR,Marvell,43553
+WRF,AR,McGehee,15900
+WRF,AR,Monticello,10000
+WRF,AR,North Little Rock,138894
+WRF,AR,Pine Bluff,30000
+WRF,AR,Springdale,147500
+WRF,GA,Atlanta,10000
+WRF,NC,Winston-Salem,500000
+ZSR,NC,Asheville,845000
+ZSR,NC,Benson,35000
+ZSR,NC,Black Mountain,20000
+ZSR,NC,Bolivia,45000
+ZSR,NC,Boone,75000
+ZSR,NC,Buies Creek,50000
+ZSR,NC,Burlington,60000
+ZSR,NC,Bynum,22000
+ZSR,NC,Carrboro,10000
+ZSR,NC,Cary,105000
+ZSR,NC,Chapel Hill,953442
+ZSR,NC,Charlotte,571500
+ZSR,NC,Cherokee,20000
+ZSR,NC,Durham,2372164
+ZSR,NC,Eden,35000
+ZSR,NC,Fayetteville,35000
+ZSR,NC,Franklin,30000
+ZSR,NC,Greensboro,280000
+ZSR,NC,Greenville,260000
+ZSR,NC,Henderson,25000
+ZSR,NC,Hendersonville,130000
+ZSR,NC,High Point,35000
+ZSR,NC,Hollister,5000
+ZSR,NC,Kinston,30000
+ZSR,NC,Kitty Hawk,25000
+ZSR,NC,Lexington,35000
+ZSR,NC,Mebane,25000
+ZSR,NC,Morganton,5000
+ZSR,NC,Morgantown,35000
+ZSR,NC,Murphy,20000
+ZSR,NC,New Bern,25000
+ZSR,NC,Newport,110000
+ZSR,NC,Patterson,20000
+ZSR,NC,Pittsboro,75000
+ZSR,NC,Raeford,292831
+ZSR,NC,Raleigh,4023000
+ZSR,NC,Research Triangle Park,33775
+ZSR,NC,Rich Square,100000
+ZSR,NC,Robbins,25000
+ZSR,NC,Robbinsville,25000
+ZSR,NC,Rocky Mount,40000
+ZSR,NC,Sanford,20000
+ZSR,NC,Seagrove,35000
+ZSR,NC,Shelby,20000
+ZSR,NC,Siler City,30000
+ZSR,NC,Spring Lake,30000
+ZSR,NC,St. Pauls,40000
+ZSR,NC,Star,50000
+ZSR,NC,Swan Quarter,20000
+ZSR,NC,Valdese,30000
+ZSR,NC,Warrenton,20000
+ZSR,NC,Waynesville,25000
+ZSR,NC,West Jefferson,80000
+ZSR,NC,Whitakers,20000
+ZSR,NC,Wilmington,140000
+ZSR,NC,Wilson,60000
+ZSR,NC,Winston-Salem,315000
+ZSR,SC,Conway,11000

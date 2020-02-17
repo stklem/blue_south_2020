@@ -1,0 +1,69 @@
+---
+title: "structural change grantmaking"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Structural Change Grantmaking
+
+```{r libraries}
+
+library(tidyverse)
+library(data.table)
+
+# install.packages("networkD3")
+library(networkD3)
+
+```
+
+## Loading and Summarizing Data
+
+```{r loading}
+grantmaking <- fread("Structural_Change_Grantmaking.csv")
+
+# Dropping grantee_work bc it is empty
+grantmaking$grantee_work <-NULL
+
+# State is blank for one row, can derive based on city
+grantmaking[city == "Durham"]$state <- "NC"
+
+# Summarizing - grantmaker to state, total
+grantmaker_to_state <- grantmaking %>% group_by(foundation, state) %>%
+  summarize(allocation = sum(grant_allocation))
+
+# Summarizing - grantmaker to state and to city
+grantmaker_to_city <- grantmaking %>% group_by(foundation, state, city) %>%
+  summarize(allocation = sum(grant_allocation))
+
+```
+
+
+## Sankey Diagram: Foundation to States
+```{r}
+
+# From these flows we need to create a node data frame: it lists every entities involved in the flow
+nodes <- data.frame(name = c(as.character(grantmaking$foundation), 
+                             as.character(grantmaking$state)) 
+                    %>% unique())
+ 
+# With networkD3, connection must be provided using id, not using real name like in the links dataframe.. So we need to reformat it.
+grantmaker_to_state$IDfoundation <- match(grantmaker_to_state$foundation, nodes$name)-1 
+grantmaker_to_state$IDstate <- match(grantmaker_to_state$state, nodes$name)-1
+
+# convert grantmaker_to_state to plain data frame
+grantmaker_to_state <- data.frame(grantmaker_to_state)
+
+# prepare colour scale
+ColourScal ='d3.scaleOrdinal() .range(["#FDE725FF","#B4DE2CFF","#6DCD59FF","#35B779FF","#1F9E89FF","#26828EFF","#31688EFF","#3E4A89FF","#482878FF","#440154FF"])'
+
+# Make the Network
+networkD3::sankeyNetwork(Links = grantmaker_to_state, Nodes = nodes,
+                     Source = "IDfoundation", Target = "IDstate",
+                     Value = "allocation", NodeID = "name", 
+                     sinksRight = FALSE, nodeWidth = 40, fontSize = 13, 
+                     nodePadding = 10)
+```
+
